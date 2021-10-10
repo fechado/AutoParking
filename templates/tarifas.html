@@ -1,0 +1,65 @@
+{% extends "main.html" %}
+{% block title %}Tarifas{% endblock %}
+
+{% block nav %}{{super()}}{% endblock %}
+{% block item_4 %} active fw-bold text-danger{% endblock %}
+{% block content %}
+<div class='container'>
+      <p></p>
+      <h1 class="text-center">Tarifas</h1>
+      <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#userModal">
+        Modifica Tarifas
+      </button>
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Base</th>
+                <th scope="col">Vehículo</th>
+                <th scope="col">Tarifa</th>
+            </tr>
+        </thead>
+        <tbody>          
+          {% for tarifas, tv in tarifa %}
+          <tr>
+            <th scope="row">Hora</th>
+            <td>{{tv.nombre}}</td>
+            <td>{{tarifas.valor}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <form action="#" method="POST">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modifica Tarifas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="bici" value="{{bici}}" placeholder="Tarifa Hora" name="bici">
+              <label for="bici">Tarifa Bicicleta</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="moto" value="{{moto}}" placeholder="Nombres" name="moto">
+              <label for="moto">Tarifa Moto</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="auto" value="{{auto}}" placeholder="Apellido" name="auto">
+              <label for="auto">Tarifa Auto</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+
+
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+{% endblock %}
