@@ -57,7 +57,6 @@ def index():
         password = request.form["pass"]
         
         validate = Usuario.login(usuario, password)
-        print(validate[1])
         if validate[0]:
             login_user(validate[1])
             return redirect(url_for("ventas"))

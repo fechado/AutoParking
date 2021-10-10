@@ -133,3 +133,4 @@ dmypy.json
 
 config_old.py
 db*.ini
+flask_session
