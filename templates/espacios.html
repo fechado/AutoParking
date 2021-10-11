@@ -8,22 +8,20 @@
       <p></p>
       <h1 class="text-center">Espacios</h1>
       <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#userModal">
-        Modifica Tarifas
+        Modifica espacios
       </button>
-      <table class="table">
+      <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">Base</th>
-                <th scope="col">Vehículo</th>
-                <th scope="col">Tarifa</th>
+                <th scope="col">Tipo de vehículo</th>
+                <th scope="col">Espacios</th>
             </tr>
         </thead>
         <tbody>          
-          {% for tarifas, tv in tarifa %}
+          {% for cant, tv in parqueos %}
           <tr>
-            <th scope="row">Hora</th>
             <td>{{tv.nombre}}</td>
-            <td>{{tarifas.valor}}</td>
+            <td>{{cant.capacidad}}</td>
           </tr>
           {% endfor %}
         </tbody>
@@ -35,22 +33,16 @@
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modifica Tarifas</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Modifica espacios parqueadero</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+          {% for cant, tv in parqueos %}
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="bici" value="{{bici}}" placeholder="Tarifa Hora" name="bici">
-              <label for="bici">Tarifa Bicicleta</label>
+              <input type="text" class="form-control" id="{{tv.nombre}}" value="{{cant.capacidad}}" placeholder="{{tv.nombre}}" name="{{tv.nombre}}">
+              <label for="{{tv.nombre}}">{{tv.nombre}}</label>
             </div>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="moto" value="{{moto}}" placeholder="Nombres" name="moto">
-              <label for="moto">Tarifa Moto</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="auto" value="{{auto}}" placeholder="Apellido" name="auto">
-              <label for="auto">Tarifa Auto</label>
-            </div>
+          {% endfor %}
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
